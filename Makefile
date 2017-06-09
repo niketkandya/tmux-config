@@ -19,8 +19,11 @@ $(HOME)/.%: %
 	ln -fs $(PWD)/$< $@
 
 install: $(TARGETS)
+	git submodule update --init
 
 update:
 	git pull
+	git submodule sync
+	git submodule update --init
 
 .PHONY: install update
